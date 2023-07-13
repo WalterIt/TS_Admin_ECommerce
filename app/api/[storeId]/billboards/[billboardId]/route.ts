@@ -11,6 +11,10 @@ export async function GET(
       return new NextResponse("Billboard ID is a required!", { status: 400 });
     }
 
+    if (!params.billboardId || params.billboardId === "undefined") {
+      return new NextResponse("Billboard ID is a required!", { status: 400 });
+    }
+
     const billboard = await prismadb.billboard.findUnique({
       where: {
         id: params.billboardId,
@@ -47,6 +51,10 @@ export async function PATCH(
 
     if (!params.storeId) {
       return new NextResponse("Store ID is a required field!", { status: 400 });
+    }
+
+    if (!params.billboardId || params.billboardId === "undefined") {
+      return new NextResponse("Billboard ID is a required!", { status: 400 });
     }
 
     if (!params.billboardId || params.billboardId === "undefined") {
@@ -96,6 +104,10 @@ export async function DELETE(
       return new NextResponse("Billboard ID is a required!", { status: 400 });
     }
 
+    if (!params.billboardId || params.billboardId === "undefined") {
+      return new NextResponse("Billboard ID is a required!", { status: 400 });
+    }
+
     const storeByUserId = await prismadb.store.findFirst({
       where: {
         userId,
@@ -113,7 +125,7 @@ export async function DELETE(
       },
     });
 
-    return NextResponse.json(billboard);
+    return NextResponse.json("Billboard deleted!");
   } catch (error) {
     console.log("[BILLBOARD_DELETE]", error);
     return new NextResponse("Internal Server Error", { status: 500 });

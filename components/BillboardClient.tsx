@@ -4,8 +4,18 @@ import Heading from "./ui/Heading";
 import { Button } from "./ui/button";
 import { Separator } from "./ui/separator";
 import { useParams, useRouter } from "next/navigation";
+import {
+  BillboardColumns,
+  columns,
+} from "@/app/(dashboard)/[storeId]/(routes)/billboards/Columns";
+import { DataTable } from "./ui/DataTable";
+import ApiList from "./ui/ApiList";
 
-const BillboardClient = () => {
+interface BillboardClientProps {
+  data: BillboardColumns[];
+}
+
+const BillboardClient: React.FC<BillboardClientProps> = ({ data }) => {
   const router = useRouter();
   const params = useParams();
 
@@ -13,7 +23,7 @@ const BillboardClient = () => {
     <>
       <div className="flex items-center justify-between">
         <Heading
-          title="Billboards (0)"
+          title={`Billboards (${data.length})`}
           description="Manage Billboards for your Store."
         />
         <Button
@@ -24,6 +34,13 @@ const BillboardClient = () => {
         </Button>
       </div>
       <Separator />
+      <DataTable searchKey="label" columns={columns} data={data} />
+      <Heading
+        title="Billboard APIs"
+        description="APIs calls for Billboards."
+      />
+      <Separator />
+      <ApiList entityName="billboards" entityIdName="billboardId" />
     </>
   );
 };

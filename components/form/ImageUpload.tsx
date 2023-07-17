@@ -36,7 +36,7 @@ const ImageUpload: React.FC<ImageUploadProps> = ({
       <div className="flex items-center mb-4 gap-4">
         {value.map((url) => (
           <div
-            className="relative w-[200px] h-[200px] rounded-md overflow-hidden "
+            className="relative w-[200px] h-[200px]  rounded-md overflow-hidden "
             key={url}
           >
             <div className="z-10 h-6 w-6 flex items-center justify-center rounded-full bg-slate-400/25  absolute right-2 top-2">
@@ -46,7 +46,7 @@ const ImageUpload: React.FC<ImageUploadProps> = ({
                 color="red"
               />
             </div>
-            <Image src={url} fill objectFit="cover" alt={url} />
+            <Image src={url} fill objectFit="scale-down" alt={url} />
           </div>
         ))}
       </div>

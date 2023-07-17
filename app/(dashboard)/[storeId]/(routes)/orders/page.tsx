@@ -2,7 +2,6 @@ import OrderClient from "@/components/OrderClient";
 import prismadb from "@/lib/prismadb";
 import { OrderColumns } from "./Columns";
 import { format } from "date-fns";
-import { toast } from "react-hot-toast";
 import { formatter } from "@/lib/utils";
 
 const OrdersPage = async ({ params }: { params: { storeId: string } }) => {

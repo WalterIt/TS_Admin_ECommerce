@@ -3,7 +3,6 @@
 import { Button } from "@/components/ui/button";
 import { ColumnDef } from "@tanstack/react-table";
 import { ArrowUpDown } from "lucide-react";
-import CellActions from "./CellActions";
 
 export type OrderColumns = {
   id: string;

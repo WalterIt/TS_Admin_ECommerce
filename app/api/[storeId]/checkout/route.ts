@@ -11,7 +11,7 @@ const cors = Cors({
   allowedHeaders: ["Content-Type", "Authorization"],
 });
 
-export default async function POST(
+export async function POST(
   req: Request,
   res: Response,
   { params }: { params: { storeId: string } }
@@ -28,7 +28,7 @@ export default async function POST(
   }
 }
 
-async function runMiddleware(req: Request, res: Response, fn: Function) {
+export async function runMiddleware(req: Request, res: Response, fn: Function) {
   return new Promise((resolve, reject) => {
     fn(req, res, (result: any) => {
       if (result instanceof Error) {

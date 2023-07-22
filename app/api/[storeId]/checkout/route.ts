@@ -11,7 +11,7 @@ const cors = Cors({
   allowedHeaders: ["Content-Type", "Authorization"],
 });
 
-export default async function handler(
+export default async function POST(
   req: Request,
   res: Response,
   { params }: { params: { storeId: string } }
@@ -22,7 +22,7 @@ export default async function handler(
   if (req.method === "OPTIONS") {
     return NextResponse.json({});
   } else if (req.method === "POST") {
-    return POST(req, res, { params });
+    return POST1(req, res, { params });
   } else {
     return NextResponse.json({ error: "Method Not Allowed" });
   }
@@ -39,7 +39,7 @@ async function runMiddleware(req: Request, res: Response, fn: Function) {
   });
 }
 
-async function POST(
+async function POST1(
   req: Request,
   res: Response,
   { params }: { params: { storeId: string } }

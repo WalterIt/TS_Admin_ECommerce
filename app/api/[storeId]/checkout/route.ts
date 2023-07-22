@@ -28,7 +28,7 @@ export async function POST(
   }
 }
 
-export async function runMiddleware(req: Request, res: Response, fn: Function) {
+async function runMiddleware(req: Request, res: Response, fn: Function) {
   return new Promise((resolve, reject) => {
     fn(req, res, (result: any) => {
       if (result instanceof Error) {

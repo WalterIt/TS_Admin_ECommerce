@@ -4,8 +4,8 @@ import { NextResponse } from "next/server";
 import { stripe } from "@/lib/stripe";
 import prismadb from "@/lib/prismadb";
 
-const corsHeaders = {
-  "Access-Control-Allow-Origin": "*",
+const corsHeaders: any = {
+  "Access-Control-Allow-Origin": ["https://ts-client-e-commerce.vercel.app"],
   "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
   "Access-Control-Allow-Headers": "Content-Type, Authorization",
 };
